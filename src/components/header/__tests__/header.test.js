@@ -24,6 +24,12 @@ test('should render logo', () => {
   expect(logo.length).toBe(1)
 })
 
+test('should render total price', () => {
+  const wrapper = setup()
+  const price = findByTestAttr(wrapper, 'header-total-price')
+  expect(price.length).toBe(1)
+})
+
 test('should render bag icon', () => {
   const wrapper = setup()
   const bag = wrapper.find('BagIcon')

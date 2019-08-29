@@ -5,3 +5,10 @@
 @import "./styles/mixins/mixins";
 @import "./styles/mixins/typography";
 @import "./styles/variables/variables";
+
+// components
+@import "./components/header/Header.scss";
+
+body {
+  background-color: rgb(248, 248, 248);
+}

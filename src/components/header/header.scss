@@ -1,0 +1,56 @@
+.header-wrapper {
+  @include flex-box(row, null, space-between, center);
+  height: 60px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  text-transform: uppercase;
+  background-color: #fff;
+  font-family: lato_regular, sans-serif;
+
+  &.container {
+    max-width: 1240px;
+    padding: 0px 40px;
+    margin: 0px auto;
+  }
+
+  .header-logo {
+    h1 {
+      font-size: 20px;
+      color: #444a59;
+    }
+  }
+
+  .header__icon-wrapper {
+    @include flex-box(row, null, space-evenly, center);
+
+    .header__total-price {
+      margin: 5px 5px 0;
+
+      p {
+        font-size: 12px;
+        color: #444a59;
+      }
+    }
+  }
+}
+
+@include phone-668 {
+  .header-wrapper {
+    &.container {
+      padding: 0;
+    }
+
+    .header-logo {
+      margin: 0 20px;
+      h1 {
+        font-size: 18px;
+      }
+    }
+
+    .header__icon-wrapper {
+      margin: 0 20px;
+    }
+  }
+}

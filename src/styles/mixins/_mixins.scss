@@ -63,6 +63,18 @@
   }
 }
 
+@mixin first($num) {
+  @if $num == 1 {
+    &:first-child {
+      @content;
+    }
+  } @else {
+    &:nth-child(-n + #{$num}) {
+      @content;
+    }
+  }
+}
+
 //! @media
 @mixin phone-320 {
   @media (max-width: #{$_320}) {
