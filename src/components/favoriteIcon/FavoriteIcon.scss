@@ -1,0 +1,21 @@
+.favorite-icon__wrapper {
+  display: flex;
+  position: relative;
+  margin: 0 20px 0 0;
+
+  .favorite-icon__counter {
+    margin: -6px -9px;
+    width: 13px;
+    height: 13px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    @include flex-box(null, null, center, center);
+    font-family: lato_regular, sans-serif;
+    line-height: 7px;
+    font-size: 7px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(53, 142, 215);
+    border-radius: 50%;
+  }
+}
