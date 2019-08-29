@@ -1,0 +1,81 @@
+.item-card-wrapper {
+  @include flex-box(column, null, flex-start, center);
+  background: #fff;
+  margin: 30px 0;
+  width: 30%;
+  height: 625px;
+  overflow: hidden;
+  font-family: lato_regular, sans-serif;
+
+  .item-card__wrapper-top {
+    padding: 20px 40px 0px;
+    font-size: 14px;
+    letter-spacing: 2.33px;
+    color: #444a59;
+    text-align: center;
+
+    img {
+      padding: 20px 0;
+    }
+
+    h3 {
+      padding-bottom: 20px;
+      line-height: 18px;
+      letter-spacing: 1.37px;
+      text-transform: uppercase;
+      font-family: lato_bold, sans-serif;
+    }
+
+    p {
+      padding-bottom: 10px;
+      font-size: 12px;
+      line-height: 19px;
+      letter-spacing: 0.43px;
+      color: #808080;
+      font-family: lato_regular, sans-serif;
+    }
+  }
+
+  .item-card__wrapper-bottom {
+    @include flex-box(column, null, flex-end, center);
+    color: #444a59;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    padding-bottom: 20px;
+
+    .price-wrapper {
+      @include flex-box(row, null, center, center);
+      width: 100%;
+      padding-bottom: 10px;
+
+      .price {
+        color: #808080;
+      }
+      .discounted {
+        color: red;
+      }
+      .strike {
+        text-decoration: line-through;
+      }
+
+      h5 {
+        margin: 10px 5px;
+      }
+    }
+
+    button {
+      width: calc(100% - 40px);
+      border: 1px solid #d9d9d9;
+      border-radius: 100px;
+      background-color: #ffffff;
+      cursor: pointer;
+      transition: 0.3s border, 0.3s color, 0.3s background-color;
+      padding: 13px;
+      font-family: "Lato-Bold", sans-serif;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1.39px;
+    }
+  }
+}

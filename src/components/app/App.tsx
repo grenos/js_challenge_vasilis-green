@@ -14,10 +14,11 @@ const App: React.FC<INT.IAppProps> = ({ setData }): JSX.Element => {
 
   useEffect(() => {
     callApi()
-
+    // eslint-disable-next-line
   }, [])
 
   const callApi = () => {
+    setLoading(setLoading => !setLoading)
     axios({
       method: 'get',
       url: `https://api.musement.com/api/v3/venues/164/activities?limit=60&offset=0`,
@@ -28,17 +29,17 @@ const App: React.FC<INT.IAppProps> = ({ setData }): JSX.Element => {
         'x-musement-version': '3.3.2'
       }
     }).then(res => {
-      console.log(res)
       setData(res.data)
+      setLoading(setLoading => !setLoading)
+    }).catch(err => {
+      console.log(err)
     })
   }
 
   return (
     <div className="app-wrapper">
       <Header />
-
       <Posts loading={loading} />
-
       <Pagination />
     </div>
   )

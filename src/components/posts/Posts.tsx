@@ -1,4 +1,4 @@
-import React, { useState, Children } from 'react'
+import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import * as INT from '../../helpers/interfaces'
 import Post from '../post/Post'
@@ -26,7 +26,8 @@ const Posts: React.FC<INT.IPostsProps> = ({ currentPage, data, loading }): JSX.E
             cover_image_url={cover_image_url}
             title={title}
             description={description}
-            price={discount === 0 ? retail_price : net_price}
+            retail_price={retail_price}
+            net_price={net_price}
             discount={discount}
           />
         ))

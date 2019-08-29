@@ -1,5 +1,6 @@
 .posts-wrapper {
-  background: palevioletred;
+  // background: palevioletred;
+  @include flex-box(row, wrap, space-evenly, center);
 
   &.container {
     max-width: 1240px;

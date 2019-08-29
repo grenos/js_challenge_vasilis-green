@@ -52,7 +52,12 @@ export interface IPostProps {
   cover_image_url: string
   title: string
   description: string
-  price: {
+  retail_price: {
+    currency: string
+    formatted_value: string
+    value: number
+  }
+  net_price: {
     currency: string
     formatted_value: string
     value: number
