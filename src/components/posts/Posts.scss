@@ -1,0 +1,9 @@
+.posts-wrapper {
+  background: palevioletred;
+
+  &.container {
+    max-width: 1240px;
+    padding: 60px 40px 0;
+    margin: 0px auto;
+  }
+}
