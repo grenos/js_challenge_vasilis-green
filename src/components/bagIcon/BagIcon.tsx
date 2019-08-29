@@ -1,8 +1,8 @@
 import React from 'react'
 import { ReactComponent as Bag } from '../../media/svg/bag.svg';
+import * as INT from '../../helpers/interfaces'
 
-
-const BagIcon = () => {
+const BagIcon: React.FC<INT.IBagIconProps> = (): JSX.Element => {
   return (
     <div className="bag-icon__wrapper"
       data-test="bag-icon-component">

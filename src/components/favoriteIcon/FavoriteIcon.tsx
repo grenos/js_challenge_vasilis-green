@@ -1,7 +1,8 @@
 import React from 'react'
 import { ReactComponent as Favorite } from '../../media/svg/wishlist.svg';
+import * as INT from '../../helpers/interfaces'
 
-const FavoriteIcon = () => {
+const FavoriteIcon: React.FC<INT.IHeaderProps> = (): JSX.Element => {
   return (
     <div className="favorite-icon__wrapper"
       data-test="favorite-icon-component">

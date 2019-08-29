@@ -1,3 +1,4 @@
-export const test = () => ({
-  type: 'TEST'
+export const setData = (payload: any) => ({
+  type: 'SET_DATA',
+  payload
 });
