@@ -4,9 +4,12 @@ import { ReactComponent as Bag } from '../../media/svg/bag.svg';
 
 const BagIcon = () => {
   return (
-    <div style={{ margin: '0 10px 0 0' }}>
+    <div className="bag-icon__wrapper" data-test="bag-icon-component">
       <Bag />
-    </div>
+      <span className="bag-icon__counter" data-test="bag-icon-counter">
+        21
+      </span>
+    </div >
   )
 }
 
