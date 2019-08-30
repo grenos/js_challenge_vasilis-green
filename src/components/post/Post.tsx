@@ -37,7 +37,9 @@ const Post: React.FC<INT.IPostProps> = ({
   }, [loading, error, cover_image_url])
 
   return (
-    <div className="item-card-wrapper">
+    <div className="item-card-wrapper"
+      data-test="card-component">
+
       <div className="icon-wrapper">
         <AtfButton uuid={uuid} />
       </div>
@@ -57,8 +59,8 @@ const Post: React.FC<INT.IPostProps> = ({
 
       <div className="item-card__wrapper-bottom">
         <div className="price-wrapper">
-          <h5 className={discount === 0 ? 'strike' : 'price'}>{retail_price.formatted_value}</h5>
-          {discount === 0
+          <h5 className={discount > 0 ? 'strike' : 'price'}>{retail_price.formatted_value}</h5>
+          {discount > 0
             ? <h5 className="discounted">{net_price.formatted_value}</h5>
             : null}
         </div>

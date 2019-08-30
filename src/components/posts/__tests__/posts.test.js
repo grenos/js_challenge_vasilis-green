@@ -29,8 +29,8 @@ test('should render loader placeholder ', () => {
 
 test('should render component ', () => {
   const wrapper = setup({}, { loading: false })
-  const loader = findByTestAttr(wrapper, 'posts-component')
-  expect(loader.length).toBe(1)
+  const component = findByTestAttr(wrapper, 'posts-component')
+  expect(component.length).toBe(1)
 })
 
 
