@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import * as INT from '../../helpers/interfaces'
 import Scrollbar from 'react-scrollbars-custom';
 import AtcButton from '../atcButton/AtcButton'
 import AtfButton from '../atfButton/AtfButton'
+import loadingImg from '../../media/images/loading.png'
+import errorImg from '../../media/images/error.png'
 
 const URL = '?q=60&fit=crop&w=300&h=300'
 
@@ -15,15 +17,38 @@ const Post: React.FC<INT.IPostProps> = ({
   discount,
   uuid
 }): JSX.Element => {
+
+  const [error, setError] = useState(false)
+  const [loading, setLoad] = useState(true)
+  const [img, setImg] = useState<string>()
+
+  // check if image has finished loading after render
+  // use placeholders accordingly if needed
+  useEffect(() => {
+    if (loading) {
+      setImg(loadingImg)
+    } else if (!loading) {
+      setImg(cover_image_url + URL)
+    }
+
+    if (error) {
+      setImg(errorImg)
+    }
+  }, [loading, error, cover_image_url])
+
   return (
     <div className="item-card-wrapper">
       <div className="icon-wrapper">
         <AtfButton uuid={uuid} />
       </div>
 
-
       <div className="item-card__wrapper-top">
-        <img src={cover_image_url + URL} alt={title} />
+        <img src={img}
+          alt={title}
+          onLoad={() => setLoad(false)}
+          onError={() => setError(true)}
+        />
+
         <h3>{title}</h3>
         <Scrollbar noDefaultStyles style={{ height: 60 }}>
           {description ? <p>{description}</p> : <p>Descrizione non disponibile!</p>}

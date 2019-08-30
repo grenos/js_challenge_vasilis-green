@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { setCurrentPage } from '../../redux/actions/paginateAllActions'
 // @ts-ignore
@@ -6,9 +6,21 @@ import { generatePagination } from '../../helpers/pagination'
 import * as INT from '../../helpers/interfaces'
 import { ReactComponent as ArrowLeft } from '../../media/svg/arrow-left.svg';
 import { ReactComponent as ArroeRight } from '../../media/svg/arrow-right.svg';
-
+import useWindowSize from '@rehooks/window-size';
 
 const PaginationAll: React.FC<INT.IPaginateAllProps> = ({ currentPage, data, setCurrentPage }): JSX.Element => {
+
+  let ww = useWindowSize()
+  const [_WW, set_WW] = useState<boolean>(false)
+
+  useEffect(() => {
+    if (ww.innerWidth <= 668) {
+      set_WW(true)
+    } else {
+      set_WW(false)
+    }
+  }, [ww.innerWidth])
+
 
   const [postsPerPage] = useState(6);
 
@@ -63,7 +75,7 @@ const PaginationAll: React.FC<INT.IPaginateAllProps> = ({ currentPage, data, set
           </li>
 
           {/* function that groups visible pages and generates ellipsis */}
-          {generatePagination(currentPage, pageNumbers.slice(-1)[0]).map((item: number, i: number) => (
+          {generatePagination(currentPage, pageNumbers.slice(-1)[0], _WW).map((item: number, i: number) => (
             <li key={i}>
               <a onClick={() => setCurrentPage(item)} href="!#"
                 className={currentPage === item ? 'active' : ''}>
