@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import * as INT from '../../helpers/interfaces'
 import Post from '../post/Post'
 
-const Posts: React.FC<INT.IPostsProps> = ({ currentPage, data, loading }): JSX.Element => {
+export const UNCPosts: React.FC<INT.IPostsProps> = ({ currentPage, data, loading }): JSX.Element => {
 
   const [postsPerPage] = useState(6);
 
@@ -14,11 +14,11 @@ const Posts: React.FC<INT.IPostsProps> = ({ currentPage, data, loading }): JSX.E
   const currentPosts = data.slice(indexOfFirstPost, indexOfLastPost);
 
   if (loading) {
-    return <div className="loader">Loading...</div>
+    return <div className="loader" data-test="loader">Loading...</div>
   }
 
   return (
-    <div className="posts-wrapper container">
+    <div className="posts-wrapper container" data-test="posts-component">
       {
         currentPosts.map(({ cover_image_url, title, description, retail_price, net_price, discount, uuid }: INT.IData) => (
           <Post
@@ -44,5 +44,5 @@ const mapStateToProps = (state: any) => {
   }
 }
 
-export default connect(mapStateToProps, null)(Posts)
+export default connect(mapStateToProps, null)(UNCPosts)
 
