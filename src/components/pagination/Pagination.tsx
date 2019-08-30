@@ -8,7 +8,11 @@ import { ReactComponent as ArrowLeft } from '../../media/svg/arrow-left.svg';
 import { ReactComponent as ArroeRight } from '../../media/svg/arrow-right.svg';
 import useWindowSize from '@rehooks/window-size';
 
-const PaginationAll: React.FC<INT.IPaginateAllProps> = ({ currentPage, data, setCurrentPage }): JSX.Element => {
+export const UNCPagination: React.FC<INT.IPaginateAllProps> = ({
+  currentPage,
+  data,
+  setCurrentPage
+}): JSX.Element => {
 
   let ww = useWindowSize()
   const [_WW, set_WW] = useState<boolean>(false)
@@ -57,19 +61,19 @@ const PaginationAll: React.FC<INT.IPaginateAllProps> = ({ currentPage, data, set
   }
 
   return (
-    <div className="pagination-wrapper">
-      <div className="paginate-all__wrapper" data-test="paginate-all-component">
+    <div className="pagination-wrapper" data-test="pagination-component">
+      <div className="paginate-all__wrapper">
         <ul data-test="paginate-all-list">
 
           <li>
-            <a href="!#" onClick={goToStart}>
+            <a href="!#" onClick={goToStart} data-test="start">
               <ArrowLeft />
               <ArrowLeft />
             </a>
           </li>
 
           <li>
-            <a href="!#" onClick={goToPrev}>
+            <a href="!#" onClick={goToPrev} data-test="back">
               <ArrowLeft />
             </a>
           </li>
@@ -77,7 +81,7 @@ const PaginationAll: React.FC<INT.IPaginateAllProps> = ({ currentPage, data, set
           {/* function that groups visible pages and generates ellipsis */}
           {generatePagination(currentPage, pageNumbers.slice(-1)[0], _WW).map((item: number, i: number) => (
             <li key={i}>
-              <a onClick={() => setCurrentPage(item)} href="!#"
+              <a onClick={() => setCurrentPage(item)} href="!#" data-test="page"
                 className={currentPage === item ? 'active' : ''}>
                 {item}
               </a>
@@ -85,13 +89,13 @@ const PaginationAll: React.FC<INT.IPaginateAllProps> = ({ currentPage, data, set
           ))}
 
           <li >
-            <a href="!#" onClick={goToFwd}>
+            <a href="!#" onClick={goToFwd} data-test="fwd">
               <ArroeRight />
             </a>
           </li>
 
           <li>
-            <a href="!#" onClick={goToEnd}>
+            <a href="!#" onClick={goToEnd} data-test="end">
               <ArroeRight />
               <ArroeRight />
             </a>
@@ -113,4 +117,4 @@ const mapStateToProps = (state: any) => {
 
 export default connect(mapStateToProps, {
   setCurrentPage,
-})(PaginationAll)
+})(UNCPagination)
