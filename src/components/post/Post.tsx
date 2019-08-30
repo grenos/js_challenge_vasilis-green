@@ -1,6 +1,8 @@
 import React from 'react'
 import * as INT from '../../helpers/interfaces'
 import Scrollbar from 'react-scrollbars-custom';
+import AtcButton from '../atcButton/AtcButton'
+import AtfButton from '../atfButton/AtfButton'
 
 const URL = '?q=60&fit=crop&w=300&h=300'
 
@@ -10,16 +12,21 @@ const Post: React.FC<INT.IPostProps> = ({
   description,
   retail_price,
   net_price,
-  discount
+  discount,
+  uuid
 }): JSX.Element => {
   return (
     <div className="item-card-wrapper">
+      <div className="icon-wrapper">
+        <AtfButton uuid={uuid} />
+      </div>
+
 
       <div className="item-card__wrapper-top">
         <img src={cover_image_url + URL} alt={title} />
         <h3>{title}</h3>
         <Scrollbar noDefaultStyles style={{ height: 60 }}>
-          {description ? <p>{description}</p> : <p>Not Available!</p>}
+          {description ? <p>{description}</p> : <p>Descrizione non disponibile!</p>}
         </Scrollbar>
       </div>
 
@@ -31,9 +38,9 @@ const Post: React.FC<INT.IPostProps> = ({
             : null}
         </div>
 
-        <button >
+        <AtcButton uuid={uuid}>
           ADD TO CART
-        </button>
+        </AtcButton>
 
       </div>
 

@@ -63,4 +63,5 @@ export interface IPostProps {
     value: number
   }
   discount: number
+  uuid: string
 }

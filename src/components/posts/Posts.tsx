@@ -14,7 +14,7 @@ const Posts: React.FC<INT.IPostsProps> = ({ currentPage, data, loading }): JSX.E
   const currentPosts = data.slice(indexOfFirstPost, indexOfLastPost);
 
   if (loading) {
-    return <div>Loading...</div>
+    return <div className="loader">Loading...</div>
   }
 
   return (
@@ -23,6 +23,7 @@ const Posts: React.FC<INT.IPostsProps> = ({ currentPage, data, loading }): JSX.E
         currentPosts.map(({ cover_image_url, title, description, retail_price, net_price, discount, uuid }: INT.IData) => (
           <Post
             key={uuid}
+            uuid={uuid}
             cover_image_url={cover_image_url}
             title={title}
             description={description}

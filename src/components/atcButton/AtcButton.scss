@@ -1,0 +1,19 @@
+.ATC__button-wrapper {
+  width: calc(100% - 40px);
+  border: 1px solid #d9d9d9;
+  border-radius: 100px;
+  background-color: #ffffff;
+  cursor: pointer;
+  transition: 0.3s border, 0.3s color, 0.3s background-color;
+  padding: 13px;
+  font-family: lato-bold, sans-serif;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 1.39px;
+
+  &:hover {
+    border: 1px solid #444a59;
+    color: #ffffff;
+    background-color: #444a59;
+  }
+}

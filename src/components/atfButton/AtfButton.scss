@@ -1,0 +1,30 @@
+.ATF__button-wrapper {
+  width: 35px;
+  height: 35px;
+  @include flex-box(null, null, center, center);
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border-radius: 50%;
+  border: 1px solid #d9d9d9;
+  background-color: #ffffff;
+  cursor: pointer;
+  transition: 0.3s border, 0.3s color, 0.3s background-color;
+
+  &:hover {
+    border: 1px solid #444a59;
+  }
+
+  .icon {
+    width: 20px;
+    height: 20px;
+    fill: #d9d9d9;
+    transition: 0.3s fill;
+
+    // looks at aprent node to determine if .icon
+    // is within parent's hover range
+    :hover > & {
+      fill: #444a59;
+    }
+  }
+}
