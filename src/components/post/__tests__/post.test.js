@@ -31,7 +31,7 @@ test('should render component', () => {
 
 test('should render favorites icon', () => {
   const wrapper = setup()
-  const favIcon = wrapper.find('AtfButton')
+  const favIcon = wrapper.find('Connect(UNCAtfButton)')
   expect(favIcon.length).toBe(1)
 })
 

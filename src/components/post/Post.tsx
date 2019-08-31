@@ -36,6 +36,7 @@ const Post: React.FC<INT.IPostProps> = ({
     }
   }, [loading, error, cover_image_url])
 
+
   return (
     <div className="item-card-wrapper"
       data-test="card-component">
@@ -65,7 +66,12 @@ const Post: React.FC<INT.IPostProps> = ({
             : null}
         </div>
 
-        <AtcButton uuid={uuid}>
+        <AtcButton
+          uuid={uuid}
+          title={title}
+          cover_image_url={cover_image_url}
+          price={discount > 0 ? net_price.formatted_value : retail_price.formatted_value}
+        >
           ADD TO CART
         </AtcButton>
 

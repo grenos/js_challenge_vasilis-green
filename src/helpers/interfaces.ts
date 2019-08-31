@@ -11,7 +11,7 @@ export interface IBagIconProps {
 }
 
 export interface IFavIconProps {
-
+  favorites: Array<string>
 }
 
 export interface IPaginationProps {
@@ -64,4 +64,11 @@ export interface IPostProps {
   }
   discount: number
   uuid: string
+}
+
+export interface IAtfProps {
+  uuid: string
+  addToFavorites: Function
+  removeFromFavorites: Function
+  favorites: string[]
 }

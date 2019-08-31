@@ -1,18 +1,39 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { connect } from 'react-redux'
 import { ReactComponent as Favorite } from '../../media/svg/wishlist.svg';
 import * as INT from '../../helpers/interfaces'
 
-const FavoriteIcon: React.FC<INT.IHeaderProps> = (): JSX.Element => {
+export const UNCFavoriteIcon: React.FC<INT.IFavIconProps> = ({ favorites }): JSX.Element => {
+
+  const [show, setShow] = useState(false)
+
+  useEffect(() => {
+    if (favorites.length > 0) {
+      setShow(true)
+    } else {
+      setShow(false)
+    }
+  }, [favorites.length])
+
+
   return (
     <div className="favorite-icon__wrapper"
       data-test="favorite-icon-component">
       <Favorite />
-      <span className="favorite-icon__counter"
+      {show && <span className="favorite-icon__counter"
         data-test="favorite-icon-counter">
-        5
-      </span>
+        {favorites.length}
+      </span>}
     </div>
   )
 }
 
-export default FavoriteIcon
+const mapStateToProps = (state: any) => {
+  return {
+    favorites: state.uiReducer.favorites
+  }
+}
+
+export default connect(mapStateToProps, null)(UNCFavoriteIcon)
+
+

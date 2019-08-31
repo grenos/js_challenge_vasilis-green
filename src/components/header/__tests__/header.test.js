@@ -39,7 +39,7 @@ test('should render bag icon', () => {
 
 test('should render favorite icon', () => {
   const wrapper = setup()
-  const favorite = wrapper.find('FavoriteIcon')
+  const favorite = wrapper.find('Connect(UNCFavoriteIcon)')
   expect(favorite.length).toBe(1)
 })
 

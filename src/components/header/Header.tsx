@@ -3,7 +3,7 @@ import BagIcon from '../bagIcon/BagIcon'
 import FavoriteIcon from '../favoriteIcon/FavoriteIcon'
 import * as INT from '../../helpers/interfaces'
 
-const Header: React.FC<INT.IFavIconProps> = (): JSX.Element => {
+const Header: React.FC<INT.IHeaderProps> = (): JSX.Element => {
   return (
     <div className="header-wrapper container"
       data-test="header-component">
