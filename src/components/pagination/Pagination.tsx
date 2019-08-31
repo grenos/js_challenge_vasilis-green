@@ -79,12 +79,15 @@ export const UNCPagination: React.FC<INT.IPaginateAllProps> = ({
           </li>
 
           {/* function that groups visible pages and generates ellipsis */}
+          {/* also check if return value is 'ellipsis' then is not making it a link */}
           {generatePagination(currentPage, pageNumbers.slice(-1)[0], _WW).map((item: number, i: number) => (
             <li key={i}>
-              <a onClick={() => setCurrentPage(item)} href="!#" data-test="page"
-                className={currentPage === item ? 'active' : ''}>
-                {item}
-              </a>
+              {(typeof item === typeof 'string')
+                ? <span>{item}</span>
+                : <a onClick={() => setCurrentPage(item)} href="!#" data-test="page"
+                  className={currentPage === item ? 'active' : ''} style={{ cursor: 'pointer' }}>
+                  {item}
+                </a>}
             </li>
           ))}
 
