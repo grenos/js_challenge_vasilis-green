@@ -5,6 +5,7 @@ import { Transition, animated as a } from 'react-spring/renderprops.cjs'
 import * as INT from '../../helpers/interfaces'
 import { toggleMiniBag } from '../../redux/actions/uiActions'
 import { useOnClickOutside } from '../../helpers/useOnClickOutside'
+import BagPopUpItem from './bagPopUp__item/BagPopUpItem'
 
 // create portal
 const modalRoot = document.getElementById('bag-root')
@@ -41,7 +42,7 @@ export const UNCBagPopUp: React.FC<INT.IBagModal> = ({ isMiniBagToggle, toggleMi
             </div>
           </div>
           <div className="minibag-wrapper" ref={ref}>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem porro sint perspiciatis maiores adipisci. Quae repellendus cumque sed ipsa blanditiis distinctio molestias animi, rem odio exercitationem? Eius laboriosam optio ex.
+            <BagPopUpItem />
           </div>
         </a.div>
       )}
