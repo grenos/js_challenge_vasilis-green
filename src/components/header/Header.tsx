@@ -1,9 +1,21 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import { connect } from 'react-redux'
 import BagIcon from '../bagIcon/BagIcon'
 import FavoriteIcon from '../favoriteIcon/FavoriteIcon'
 import * as INT from '../../helpers/interfaces'
 
-const Header: React.FC<INT.IHeaderProps> = (): JSX.Element => {
+export const UNCHeader: React.FC<INT.IHeaderProps> = ({ total }): JSX.Element => {
+
+  const [show, setShow] = useState(false)
+
+  useEffect(() => {
+    if (total > 0) {
+      setShow(true)
+    } else {
+      setShow(false)
+    }
+  }, [total])
+
   return (
     <div className="header-wrapper container"
       data-test="header-component">
@@ -13,10 +25,11 @@ const Header: React.FC<INT.IHeaderProps> = (): JSX.Element => {
       </div>
 
       <div className="header__icon-wrapper">
-        <div className="header__total-price"
-          data-test="header-total-price">
-          <p>£250</p>
-        </div>
+        {show &&
+          <div className="header__total-price"
+            data-test="header-total-price">
+            <p>£{Number(total).toFixed(2)}</p>
+          </div>}
         <BagIcon />
         <FavoriteIcon />
       </div>
@@ -25,4 +38,13 @@ const Header: React.FC<INT.IHeaderProps> = (): JSX.Element => {
   )
 }
 
-export default Header
+const mapStateToProps = (state: any) => {
+  return {
+    total: state.cartReducer.total,
+  }
+}
+
+export default connect(mapStateToProps, null)(UNCHeader)
+
+
+

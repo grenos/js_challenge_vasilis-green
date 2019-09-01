@@ -1,24 +1,19 @@
 
 import dotProp from 'dot-prop-immutable'
 import { CART_STATE } from '../states/cartState'
+import * as INT from '../../helpers/interfaces'
 
-interface IItem {
-  uuid: string
-  title: string
-  cover_image_url: string
-  price: number
-  quantity: number
-}
+
 
 export default function cartReducer(state = CART_STATE, action: any) {
   switch (action.type) {
 
     case 'ADD_TO_CART':
-      let ItemInCart = state.cart.find((item: IItem) => action.payload.uuid === item.uuid)
+      let ItemInCart = state.cart.find((item: INT.ICartItem) => action.payload.uuid === item.uuid)
 
       if (ItemInCart) {
         // eslint-disable-next-line
-        state.cart.map((item: IItem) => {
+        state.cart.map((item: INT.ICartItem) => {
           if (item.uuid === action.payload.uuid) {
             return {
               ...state,
@@ -41,20 +36,20 @@ export default function cartReducer(state = CART_STATE, action: any) {
       }
 
     case 'REMOVE_FROM_CART':
-      let priceToRemove = state.cart.find((item: IItem) => action.payload.uuid === item.uuid)
+      let priceToRemove = state.cart.find((item: INT.ICartItem) => action.payload.uuid === item.uuid)
 
       return {
         ...state,
-        cart: state.cart.filter((item: IItem) => action.uuid !== item.uuid),
+        cart: state.cart.filter((item: INT.ICartItem) => action.uuid !== item.uuid),
         total: state.total - (priceToRemove.price * priceToRemove.quantity)
       }
 
 
     case 'ADD_QUANTITY':
-      let addQt = state.cart.find((item: IItem) => action.uuid === item.uuid)
+      let addQt = state.cart.find((item: INT.ICartItem) => action.uuid === item.uuid)
 
       // eslint-disable-next-line
-      state.cart.map((item: IItem) => {
+      state.cart.map((item: INT.ICartItem) => {
         if (item.uuid === action.uuid) {
           return {
             ...state,
@@ -70,20 +65,18 @@ export default function cartReducer(state = CART_STATE, action: any) {
 
 
     case 'REMOVE_QUANTITY':
-      let selectedItem = state.cart.find((item: any) => item.uuid === action.uuid)
+      let selectedItem = state.cart.find((item: INT.ICartItem) => item.uuid === action.uuid)
 
       //remove item entirely if qt is 0
       if (selectedItem.quantity === 1) {
-        console.log('if');
-
         return {
           ...state,
-          cart: state.cart.filter((item: IItem) => action.uuid !== item.uuid),
+          cart: state.cart.filter((item: INT.ICartItem) => action.uuid !== item.uuid),
           total: state.total - selectedItem.price
         }
       } else {
         // eslint-disable-next-line
-        state.cart.map((item: IItem) => {
+        state.cart.map((item: INT.ICartItem) => {
           if (item.uuid === action.uuid) {
             return {
               ...state,

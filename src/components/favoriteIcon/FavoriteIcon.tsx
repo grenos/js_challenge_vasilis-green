@@ -20,10 +20,11 @@ export const UNCFavoriteIcon: React.FC<INT.IFavIconProps> = ({ favorites }): JSX
     <div className="favorite-icon__wrapper"
       data-test="favorite-icon-component">
       <Favorite />
-      {show && <span className="favorite-icon__counter"
-        data-test="favorite-icon-counter">
-        {favorites.length}
-      </span>}
+      {show
+        && <span className="favorite-icon__counter"
+          data-test="favorite-icon-counter">
+          {favorites.length}
+        </span>}
     </div>
   )
 }

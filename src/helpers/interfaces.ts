@@ -3,11 +3,11 @@ export interface IAppProps {
 }
 
 export interface IHeaderProps {
-
+  total: number
 }
 
 export interface IBagIconProps {
-
+  cart: Array<ICartItem>
 }
 
 export interface IFavIconProps {
@@ -80,5 +80,14 @@ export interface IAtcButtonProps {
   cover_image_url: string
   price: number
   addToCart: Function
-  removeQuantity: Function
+  cart: Array<ICartItem>
+}
+
+
+export interface ICartItem {
+  uuid: string
+  title: string
+  cover_image_url: string
+  price: number
+  quantity: number
 }

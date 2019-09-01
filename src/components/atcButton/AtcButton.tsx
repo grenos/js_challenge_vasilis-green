@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
-import { addToCart, removeQuantity } from '../../redux/actions/uiActions'
+import { addToCart } from '../../redux/actions/uiActions'
 import * as INT from '../../helpers/interfaces'
 
 
@@ -11,43 +11,30 @@ export const UNCAtcButton: React.FC<INT.IAtcButtonProps> = ({
   price,
   children,
   addToCart,
-  removeQuantity
+  cart
 }) => {
 
-  const handleAddToCart = () => {
+  const handleAddToCart = (): void => {
     addToCart({ uuid, title, cover_image_url, price })
   }
 
   return (
-
-    <>
-      <button className="ATC__button-wrapper"
-        data-test="ATC-btn-component"
-        onClick={handleAddToCart}>
-        {children}
-      </button>
-
-      <button className="ATC__button-wrapper"
-        data-test="ATC-btn-component"
-        onClick={() => removeQuantity(uuid)}>
-        {children}
-      </button>
-
-    </>
+    <button className="ATC__button-wrapper"
+      data-test="ATC-btn-component"
+      onClick={handleAddToCart}>
+      {children}
+    </button>
   )
 }
 
 
+const mapStateToProps = (state: any) => {
+  return {
+    cart: state.cartReducer.cart,
+  }
+}
 
-// const mapStateToProps = (state: any) => {
-//   return {
-//     currentPage: state.paginateAllReducer.currentPage,
-//     data: state.apiReducer.data
-//   }
-// }
-
-export default connect(null, {
-  addToCart,
-  removeQuantity
+export default connect(mapStateToProps, {
+  addToCart
 })(UNCAtcButton)
 
