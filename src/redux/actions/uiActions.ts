@@ -18,13 +18,16 @@ export const addToCart = (payload: INT.IAtcButtonProps) => ({
 })
 
 export const removeFromCart = (uuid: number) => ({
-  type: 'REMOVE_FROM_CART'
+  type: 'REMOVE_FROM_CART',
+  uuid
 })
 
 export const addQuantity = (uuid: number) => ({
-  type: 'ADD_QUANTITY'
+  type: 'ADD_QUANTITY',
+  uuid
 })
 
 export const removeQuantity = (uuid: number) => ({
-  type: 'REMOVE_QUANTITY'
+  type: 'REMOVE_QUANTITY',
+  uuid
 })

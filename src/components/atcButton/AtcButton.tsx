@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { addToCart } from '../../redux/actions/uiActions'
+import { addToCart, removeQuantity } from '../../redux/actions/uiActions'
 import * as INT from '../../helpers/interfaces'
 
 
@@ -10,7 +10,8 @@ export const UNCAtcButton: React.FC<INT.IAtcButtonProps> = ({
   cover_image_url,
   price,
   children,
-  addToCart
+  addToCart,
+  removeQuantity
 }) => {
 
   const handleAddToCart = () => {
@@ -18,11 +19,21 @@ export const UNCAtcButton: React.FC<INT.IAtcButtonProps> = ({
   }
 
   return (
-    <button className="ATC__button-wrapper"
-      data-test="ATC-btn-component"
-      onClick={handleAddToCart}>
-      {children}
-    </button>
+
+    <>
+      <button className="ATC__button-wrapper"
+        data-test="ATC-btn-component"
+        onClick={handleAddToCart}>
+        {children}
+      </button>
+
+      <button className="ATC__button-wrapper"
+        data-test="ATC-btn-component"
+        onClick={() => removeQuantity(uuid)}>
+        {children}
+      </button>
+
+    </>
   )
 }
 
@@ -37,5 +48,6 @@ export const UNCAtcButton: React.FC<INT.IAtcButtonProps> = ({
 
 export default connect(null, {
   addToCart,
+  removeQuantity
 })(UNCAtcButton)
 

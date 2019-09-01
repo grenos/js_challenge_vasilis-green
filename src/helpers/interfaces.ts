@@ -80,4 +80,5 @@ export interface IAtcButtonProps {
   cover_image_url: string
   price: number
   addToCart: Function
+  removeQuantity: Function
 }
