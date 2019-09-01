@@ -72,3 +72,12 @@ export interface IAtfProps {
   removeFromFavorites: Function
   favorites: string[]
 }
+
+
+export interface IAtcButtonProps {
+  uuid: string
+  title: string
+  cover_image_url: string
+  price: number
+  addToCart: Function
+}

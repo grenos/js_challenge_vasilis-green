@@ -1,7 +1,7 @@
 
-import { UI_STATE } from '../states/uiState'
+import { PAGINATION_STATE } from '../states/paginationState'
 
-export default function paginateAllReducer(state = UI_STATE, action: any) {
+export default function paginateAllReducer(state = PAGINATION_STATE, action: any) {
   switch (action.type) {
     case 'SET_CURRENT_PAGE':
       return {

@@ -1,11 +1,13 @@
 import { combineReducers } from 'redux'
-import uiReducer from './uiReducer'
+import favoritesReducer from './favoritesReducer'
 import apiReducer from './apiReducer'
 import paginateAllReducer from './paginateAllReducer'
+import cartReducer from './cartReducer'
 
 
 export default combineReducers({
-  uiReducer,
+  favoritesReducer,
+  cartReducer,
   apiReducer,
   paginateAllReducer
 })

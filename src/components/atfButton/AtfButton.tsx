@@ -36,7 +36,7 @@ export const UNCAtfButton: React.FC<INT.IAtfProps> = ({
 
 const mapStateToProps = (state: any) => {
   return {
-    favorites: state.uiReducer.favorites
+    favorites: state.favoritesReducer.favorites
   }
 }
 

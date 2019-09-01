@@ -45,12 +45,6 @@ const App: React.FC<INT.IAppProps> = ({ setData }): JSX.Element => {
   )
 }
 
-// const mapStateToProps = (state: any) => {
-//   return {
-//     currentPage: state.paginateAllReducer.currentPage,
-//     data: state.apiReducer.data
-//   }
-// }
 
 export default connect(null, {
   setData,

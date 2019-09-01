@@ -1157,6 +1157,11 @@
   dependencies:
     "@types/node" "*"
 
+"@types/dot-prop-immutable@^1.5.0":
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/@types/dot-prop-immutable/-/dot-prop-immutable-1.5.0.tgz#b7dd6eab30bc1eceb3f8c4411b0977d251eee293"
+  integrity sha512-+IYj1isIAUzUAaFqqoPWzQkHUcl0Kz6MVUl6MasPiMUygvWB3Q8C6+Ecf5tbMz/8sV3mhaETV5MObBlIcJp5kg==
+
 "@types/enzyme-adapter-react-16@^1.0.5":
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/@types/enzyme-adapter-react-16/-/enzyme-adapter-react-16-1.0.5.tgz#1bf30a166f49be69eeda4b81e3f24113c8b4e9d5"
@@ -3539,6 +3544,11 @@ domutils@^1.5.1, domutils@^1.7.0:
   dependencies:
     dom-serializer "0"
     domelementtype "1"
+
+dot-prop-immutable@^1.5.0:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/dot-prop-immutable/-/dot-prop-immutable-1.5.0.tgz#412550508682cc2037a5e2f174734193c12a5fdd"
+  integrity sha512-YcnAEqxtJSect/W3taJeMkKhDrL7NzzvgKlJ515m5aGxJBJpzetXf0wZbGapdrBNwAItWvb4sOn+jX0RBYYM1g==
 
 dot-prop@^4.1.1:
   version "4.2.0"

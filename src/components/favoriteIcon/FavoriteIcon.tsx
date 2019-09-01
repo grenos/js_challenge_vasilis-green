@@ -30,7 +30,7 @@ export const UNCFavoriteIcon: React.FC<INT.IFavIconProps> = ({ favorites }): JSX
 
 const mapStateToProps = (state: any) => {
   return {
-    favorites: state.uiReducer.favorites
+    favorites: state.favoritesReducer.favorites
   }
 }
 

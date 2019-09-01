@@ -70,7 +70,7 @@ const Post: React.FC<INT.IPostProps> = ({
           uuid={uuid}
           title={title}
           cover_image_url={cover_image_url}
-          price={discount > 0 ? net_price.formatted_value : retail_price.formatted_value}
+          price={discount > 0 ? net_price.value : retail_price.value}
         >
           ADD TO CART
         </AtcButton>

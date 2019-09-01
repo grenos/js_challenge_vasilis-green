@@ -1,8 +1,8 @@
 
-import { UI_STATE } from '../states/uiState'
+import { FAVORITES_STATE } from '../states/favoritesState'
 
 
-export default function uiReducer(state = UI_STATE, action: any) {
+export default function favoritesReducer(state = FAVORITES_STATE, action: any) {
   switch (action.type) {
     case 'ADD_TO_FAVORITES':
       return {
