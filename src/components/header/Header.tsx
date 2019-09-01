@@ -28,7 +28,7 @@ export const UNCHeader: React.FC<INT.IHeaderProps> = ({ total }): JSX.Element =>
         {show &&
           <div className="header__total-price"
             data-test="header-total-price">
-            <p>£{Number(total).toFixed(2)}</p>
+            <p>£{total.toFixed(2)}</p>
           </div>}
         <BagIcon />
         <FavoriteIcon />

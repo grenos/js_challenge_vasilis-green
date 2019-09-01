@@ -71,12 +71,9 @@ const Post: React.FC<INT.IPostProps> = ({
           title={title}
           cover_image_url={cover_image_url}
           price={discount > 0 ? net_price.value : retail_price.value}
-        >
-          ADD TO CART
-        </AtcButton>
+        />
 
       </div>
-
     </div>
   )
 }

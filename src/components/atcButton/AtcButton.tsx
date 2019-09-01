@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import { addToCart } from '../../redux/actions/uiActions'
 import * as INT from '../../helpers/interfaces'
@@ -9,7 +9,6 @@ export const UNCAtcButton: React.FC<INT.IAtcButtonProps> = ({
   title,
   cover_image_url,
   price,
-  children,
   addToCart,
   cart
 }) => {
@@ -19,18 +18,31 @@ export const UNCAtcButton: React.FC<INT.IAtcButtonProps> = ({
   }
 
   return (
-    <button className="ATC__button-wrapper"
-      data-test="ATC-btn-component"
-      onClick={handleAddToCart}>
-      {children}
-    </button>
+    <div className="atc-btn__wrapper--outer">
+      {/* eslint-disable-next-line */}
+      {cart.map((qt: any, idx: number) => {
+        if (qt !== null) {
+          return (
+            <span className="atcbtn__counter" key={idx}>
+              {qt}
+            </span>
+          )
+        }
+      })}
+      <button className="ATC__button-wrapper"
+        data-test="ATC-btn-component"
+        onClick={handleAddToCart}>
+        ADD TO CART
+      </button>
+    </div >
   )
 }
 
 
-const mapStateToProps = (state: any) => {
+const mapStateToProps = (state: any, props: any) => {
+  // possibily the worst way to do it
   return {
-    cart: state.cartReducer.cart,
+    cart: state.cartReducer.cart.map((item: any) => (item.uuid === props.uuid ? item.quantity : null))
   }
 }
 
