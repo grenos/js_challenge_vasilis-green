@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { ReactComponent as Bag } from '../../media/svg/bag.svg';
 import * as INT from '../../helpers/interfaces'
+import { toggleMiniBag } from '../../redux/actions/uiActions'
 
-export const UNCBagIcon: React.FC<INT.IBagIconProps> = ({ cart }): JSX.Element => {
+export const UNCBagIcon: React.FC<INT.IBagIconProps> = ({ cart, toggleMiniBag }): JSX.Element => {
 
   const [show, setShow] = useState(false)
 
@@ -15,10 +16,16 @@ export const UNCBagIcon: React.FC<INT.IBagIconProps> = ({ cart }): JSX.Element =
     }
   }, [cart.length])
 
+  const handleMiniBag = () => {
+    toggleMiniBag()
+  }
+
 
   return (
     <div className="bag-icon__wrapper"
-      data-test="bag-icon-component">
+      data-test="bag-icon-component"
+      onClick={handleMiniBag}
+    >
       <Bag />
       {show
         && <span className="bag-icon__counter"
@@ -35,6 +42,6 @@ const mapStateToProps = (state: any) => {
   }
 }
 
-export default connect(mapStateToProps, null)(UNCBagIcon)
+export default connect(mapStateToProps, { toggleMiniBag })(UNCBagIcon)
 
 

@@ -1,5 +1,6 @@
 export interface IAppProps {
   setData: Function
+  isMiniBagToggle: boolean
 }
 
 export interface IHeaderProps {
@@ -8,6 +9,7 @@ export interface IHeaderProps {
 
 export interface IBagIconProps {
   cart: Array<ICartItem>
+  toggleMiniBag: Function
 }
 
 export interface IFavIconProps {
@@ -90,4 +92,9 @@ export interface ICartItem {
   cover_image_url: string
   price: number
   quantity: number
+}
+
+export interface IBagModal {
+  isMiniBagToggle: boolean
+  toggleMiniBag: Function
 }

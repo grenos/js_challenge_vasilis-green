@@ -31,3 +31,8 @@ export const removeQuantity = (uuid: number) => ({
   type: 'REMOVE_QUANTITY',
   uuid
 })
+
+
+export const toggleMiniBag = () => ({
+  type: 'TOGGLE_MINI_BAG'
+})

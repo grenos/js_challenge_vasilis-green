@@ -2,13 +2,14 @@ import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import Header from '../header/Header'
 import Posts from '../posts/Posts'
+import BagPopUp from '../bagPopUp/BagPopUp'
 import axios from 'axios';
 import Pagination from '../pagination/Pagination'
 import { setData } from '../../redux/actions/apiActions'
 import * as INT from '../../helpers/interfaces'
 
 
-const App: React.FC<INT.IAppProps> = ({ setData }): JSX.Element => {
+const App: React.FC<INT.IAppProps> = ({ setData, isMiniBagToggle }): JSX.Element => {
 
   const [loading, setLoading] = useState(false);
 
@@ -16,6 +17,14 @@ const App: React.FC<INT.IAppProps> = ({ setData }): JSX.Element => {
     callApi()
     // eslint-disable-next-line
   }, [])
+
+  useEffect(() => {
+    if (isMiniBagToggle) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'visible'
+    }
+  }, [isMiniBagToggle]);
 
   const callApi = () => {
     setLoading(setLoading => !setLoading)
@@ -36,16 +45,23 @@ const App: React.FC<INT.IAppProps> = ({ setData }): JSX.Element => {
     })
   }
 
+
   return (
     <div className="app-wrapper">
       <Header />
       <Posts loading={loading} />
       <Pagination />
+      <BagPopUp />
     </div>
   )
 }
 
 
-export default connect(null, {
-  setData,
-})(App)
+const mapStateToProps = (state: any) => {
+  return {
+    isMiniBagToggle: state.uiReducer.isMiniBagToggle,
+  }
+}
+
+
+export default connect(mapStateToProps, { setData })(App)

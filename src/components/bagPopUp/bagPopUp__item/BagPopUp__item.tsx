@@ -1,6 +1,12 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import * as INT from '../../../helpers/interfaces'
 
-const BagPopUp__item = () => {
+interface props {
+  cart: any
+}
+
+const UNCBagPopUp__item: React.FC<props> = ({ cart }) => {
   return (
     <div>
 
@@ -8,4 +14,13 @@ const BagPopUp__item = () => {
   )
 }
 
-export default BagPopUp__item
+
+const mapStateToProps = (state: any) => {
+  return {
+    cart: state.cartReducer.cart,
+  }
+}
+
+export default connect(mapStateToProps, null)(UNCBagPopUp__item)
+
+
