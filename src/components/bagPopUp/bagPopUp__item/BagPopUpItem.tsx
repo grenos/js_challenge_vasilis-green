@@ -61,7 +61,7 @@ export const UNCBagPopUpItem: React.FC<props> = ({
                 <div className="flex-row-wrapper">
                   <div className="bag-item__qt">
                     <p>
-                      {item.quantity} <span>X</span> £ {item.price.toFixed(2)}
+                      {item.quantity} <span>X</span> {item.price.toLocaleString('it-IT', { style: 'currency', currency: 'EUR' })}
                     </p>
                   </div>
                   <div className="bag-item__subtract-qt"
@@ -87,7 +87,7 @@ export const UNCBagPopUpItem: React.FC<props> = ({
 
       <div className="bag-items__total">
         <h4>
-          <span>CARD SUBTOTAL:</span>  £{total.toFixed(2)}
+          <span>CARD SUBTOTAL:</span>  {total.toLocaleString('it-IT', { style: 'currency', currency: 'EUR' })}
         </h4>
       </div>
 

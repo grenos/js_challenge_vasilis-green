@@ -1,0 +1,36 @@
+.footer-wrapper {
+  @include flex-box(row, null, space-between, center);
+  height: 60px;
+  position: relative;
+  text-transform: uppercase;
+  background-color: #fff;
+  font-family: lato_regular, sans-serif;
+
+  &.container {
+    max-width: 1240px;
+    padding: 0px 40px;
+    margin: 0px auto;
+  }
+
+  .footer-logo {
+    h1 {
+      font-size: 20px;
+      color: #444a59;
+    }
+  }
+}
+
+@include phone-668 {
+  .footer-wrapper {
+    &.container {
+      padding: 0;
+    }
+
+    .footer-logo {
+      margin: 0 20px;
+      h1 {
+        font-size: 18px;
+      }
+    }
+  }
+}

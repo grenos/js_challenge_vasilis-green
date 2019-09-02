@@ -28,7 +28,7 @@ export const UNCHeader: React.FC<INT.IHeaderProps> = ({ total }): JSX.Element =>
         {show &&
           <div className="header__total-price"
             data-test="header-total-price">
-            <p>£{total.toFixed(2)}</p>
+            <p>{total.toLocaleString('it-IT', { style: 'currency', currency: 'EUR' })}</p>
           </div>}
         <BagIcon />
         <FavoriteIcon />

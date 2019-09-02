@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import Header from '../header/Header'
+import Footer from '../footer/Footer'
 import Posts from '../posts/Posts'
 import BagPopUp from '../bagPopUp/BagPopUp'
 import axios from 'axios';
@@ -52,6 +53,7 @@ const App: React.FC<INT.IAppProps> = ({ setData, isMiniBagToggle }): JSX.Element
       <Posts loading={loading} />
       <Pagination />
       <BagPopUp />
+      <Footer />
     </div>
   )
 }
