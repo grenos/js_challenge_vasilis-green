@@ -16,7 +16,7 @@ export const UNCBagIcon: React.FC<INT.IBagIconProps> = ({ cart, toggleMiniBag })
     }
   }, [cart.length])
 
-  const handleMiniBag = () => {
+  const handleMiniBag = (): void => {
     toggleMiniBag()
   }
 

@@ -11,7 +11,7 @@ export const UNCAtcButton: React.FC<INT.IAtcButtonProps> = ({
   price,
   addToCart,
   cart
-}) => {
+}): JSX.Element => {
 
   const handleAddToCart = (): void => {
     addToCart({ uuid, title, cover_image_url, price })

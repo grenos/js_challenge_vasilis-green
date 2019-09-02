@@ -6,23 +6,16 @@ import { ReactComponent as Cancel } from '../../../media/svg/cancel.svg';
 import { removeFromCart, addQuantity, removeQuantity } from '../../../redux/actions/uiActions'
 import useWindowSize from '@rehooks/window-size';
 
-interface props {
-  cart: any
-  total: any
-  removeFromCart: Function
-  addQuantity: Function
-  removeQuantity: Function
-}
 
 const URL = '?q=60&fit=crop&w=100&h=100'
 
-export const UNCBagPopUpItem: React.FC<props> = ({
+export const UNCBagPopUpItem: React.FC<INT.IBagItemProps> = ({
   cart,
   total,
   removeFromCart,
   addQuantity,
   removeQuantity
-}) => {
+}): JSX.Element => {
 
   let ww = useWindowSize();
   const [_WW, set_WW] = useState(0)
@@ -45,7 +38,7 @@ export const UNCBagPopUpItem: React.FC<props> = ({
 
       <div className="bag-items__scroll-outer-wrapper">
         <Scrollbar noDefaultStyles style={{ height: `calc(100vh - ${_WW}px)` }}>
-          {cart.map((item: any) => (
+          {cart.map((item: INT.ICartItem) => (
             <div className="bag-item__wrapper" key={item.uuid}>
               <div className="bag-item__thumb">
                 <img src={item.cover_image_url + URL} alt={item.title} />

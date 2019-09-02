@@ -1,4 +1,6 @@
-export const CART_STATE: any = {
+import * as INT from '../../helpers/interfaces'
+
+export const CART_STATE: INT.ICartState = {
   cart: [],
   total: 0
 }

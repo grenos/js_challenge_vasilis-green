@@ -27,9 +27,9 @@ const App: React.FC<INT.IAppProps> = ({ setData, isMiniBagToggle }): JSX.Element
     }
   }, [isMiniBagToggle]);
 
-  const callApi = () => {
+  const callApi = async () => {
     setLoading(setLoading => !setLoading)
-    axios({
+    const res = await axios({
       method: 'get',
       url: `https://api.musement.com/api/v3/venues/164/activities?limit=60&offset=0`,
       headers: {
@@ -38,12 +38,9 @@ const App: React.FC<INT.IAppProps> = ({ setData, isMiniBagToggle }): JSX.Element
         'x-musement-currency': 'EUR',
         'x-musement-version': '3.3.2'
       }
-    }).then(res => {
-      setData(res.data)
-      setLoading(setLoading => !setLoading)
-    }).catch(err => {
-      console.log(err)
     })
+    setData(res.data)
+    setLoading(setLoading => !setLoading)
   }
 
 

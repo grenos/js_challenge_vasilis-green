@@ -41,7 +41,7 @@ export default function cartReducer(state = CART_STATE, action: any) {
       return {
         ...state,
         cart: state.cart.filter((item: INT.ICartItem) => action.uuid !== item.uuid),
-        total: state.total - (priceToRemove.price * priceToRemove.quantity)
+        total: state.total - (priceToRemove!.price * priceToRemove!.quantity)
       }
 
 
@@ -60,7 +60,7 @@ export default function cartReducer(state = CART_STATE, action: any) {
 
       return {
         ...state,
-        total: state.total + addQt.price
+        total: state.total + addQt!.price
       }
 
 
@@ -68,11 +68,11 @@ export default function cartReducer(state = CART_STATE, action: any) {
       let selectedItem = state.cart.find((item: INT.ICartItem) => item.uuid === action.uuid)
 
       //remove item entirely if qt is 0
-      if (selectedItem.quantity === 1) {
+      if (selectedItem!.quantity === 1) {
         return {
           ...state,
           cart: state.cart.filter((item: INT.ICartItem) => action.uuid !== item.uuid),
-          total: state.total - selectedItem.price
+          total: state.total - selectedItem!.price
         }
       } else {
         // eslint-disable-next-line
@@ -80,14 +80,14 @@ export default function cartReducer(state = CART_STATE, action: any) {
           if (item.uuid === action.uuid) {
             return {
               ...state,
-              cart: [...state.cart, dotProp.set(selectedItem, 'quantity', selectedItem.quantity--)],
+              cart: [...state.cart, dotProp.set(selectedItem!, 'quantity', selectedItem!.quantity--)],
             }
           }
         })
 
         return {
           ...state,
-          total: state.total - selectedItem.price
+          total: state.total - selectedItem!.price
         }
       }
 

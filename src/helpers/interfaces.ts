@@ -23,12 +23,12 @@ export interface IPaginationProps {
 export interface IPaginateAllProps {
   currentPage: number
   setCurrentPage: Function
-  data: any
+  data: Array<IData>
 }
 
 export interface IPostsProps {
   currentPage: number
-  data: any
+  data: Array<IData>
   loading: boolean
 }
 
@@ -97,4 +97,37 @@ export interface ICartItem {
 export interface IBagModal {
   isMiniBagToggle: boolean
   toggleMiniBag: Function
+}
+
+
+export interface IBagItemProps {
+  cart: Array<ICartItem>
+  total: number
+  removeFromCart: Function
+  addQuantity: Function
+  removeQuantity: Function
+}
+
+
+export interface IApiState {
+  readonly data: Array<IData>
+}
+
+export interface ICartState {
+  readonly cart: Array<ICartItem>
+  readonly total: any
+}
+
+
+export interface IFavsState {
+  readonly favorites: string[]
+}
+
+
+export interface IPaginationState {
+  readonly currentPage: number
+}
+
+export interface IUiState {
+  readonly isMiniBagToggle: boolean
 }

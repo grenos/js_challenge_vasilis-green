@@ -15,7 +15,7 @@ export const UNCPagination: React.FC<INT.IPaginateAllProps> = ({
 }): JSX.Element => {
 
   let ww = useWindowSize()
-  const [_WW, set_WW] = useState<boolean>(false)
+  const [_WW, set_WW] = useState(false)
 
   useEffect(() => {
     if (ww.innerWidth <= 668) {
@@ -36,11 +36,11 @@ export const UNCPagination: React.FC<INT.IPaginateAllProps> = ({
     pageNumbers.push(i);
   }
 
-  const goToStart = () => {
+  const goToStart = (): void => {
     setCurrentPage(1)
   }
 
-  const goToPrev = () => {
+  const goToPrev = (): void => {
     setCurrentPage(
       currentPage > 1
         ? currentPage - 1
@@ -48,7 +48,7 @@ export const UNCPagination: React.FC<INT.IPaginateAllProps> = ({
     )
   }
 
-  const goToFwd = () => {
+  const goToFwd = (): void => {
     setCurrentPage(
       currentPage < pageNumbers.slice(-1)[0]
         ? currentPage + 1
@@ -56,7 +56,7 @@ export const UNCPagination: React.FC<INT.IPaginateAllProps> = ({
     )
   }
 
-  const goToEnd = () => {
+  const goToEnd = (): void => {
     setCurrentPage(pageNumbers.slice(-1)[0])
   }
 
