@@ -9,7 +9,16 @@ import Pagination from '../pagination/Pagination'
 import { setData } from '../../redux/actions/apiActions'
 import * as INT from '../../helpers/interfaces'
 
-
+/**
+ * App Component 
+ * makes api call
+ * renders rest of components
+ * if minibag is open sets body overflow to hidden
+ * @function
+ * @param {} setData - Action - sets api call return to store
+ * @param {} isMiniBagToggle - from redux - checks if minibag modal is open
+ * @return {JSX.Element} 
+ */
 const App: React.FC<INT.IAppProps> = ({ setData, isMiniBagToggle }): JSX.Element => {
 
   const [loading, setLoading] = useState(false);

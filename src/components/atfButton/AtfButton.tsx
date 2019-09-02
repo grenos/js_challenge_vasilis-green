@@ -5,6 +5,16 @@ import { ReactComponent as Atf } from '../../media/svg/atf-icon.svg';
 import * as INT from '../../helpers/interfaces'
 
 
+/**
+ * Add to Favorites Button Component
+ * checks if favorites array includes current item 
+ * @function
+ * @param {string} uuid
+ * @param {Function} addToFavorites - ACTION - adds item to favs if not already present
+ * @param {Function} removeFromFavorites - ACTION - removes item if already on favorites
+ * @param {Array} favorites - array of favorites
+ * @returns {JSX.Element} 
+ */
 export const UNCAtfButton: React.FC<INT.IAtfProps> = ({
   uuid,
   addToFavorites,

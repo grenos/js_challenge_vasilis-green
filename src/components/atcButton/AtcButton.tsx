@@ -3,7 +3,21 @@ import { connect } from 'react-redux'
 import { addToCart } from '../../redux/actions/uiActions'
 import * as INT from '../../helpers/interfaces'
 
-
+/**
+ * Add to Cart Button Component
+ * rendered inside the post component
+ * calls action to add item to cart
+ * displays quantity of each item on cart
+ * gets data from parent and from store
+ * @function
+ * @param {string} uuid 
+ * @param {string} title 
+ * @param {string} cover_image_url 
+ * @param {number} price 
+ * @param {Function} addToCart - Action to add to cart passing all above props
+ * @param {array} cart - displays quantity of each item on cart
+ * @returns {JSX.Element} 
+ */
 export const UNCAtcButton: React.FC<INT.IAtcButtonProps> = ({
   uuid,
   title,

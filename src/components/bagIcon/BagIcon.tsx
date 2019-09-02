@@ -4,6 +4,16 @@ import { ReactComponent as Bag } from '../../media/svg/bag.svg';
 import * as INT from '../../helpers/interfaces'
 import { toggleMiniBag } from '../../redux/actions/uiActions'
 
+
+/**
+ * Bag Icon Component
+ * loops the cart array to display its length if any
+ * on click open mini bag modal
+ * @function
+ * @param {Array} cart
+ * @param {Function} toggleMiniBag - ACTION 
+ * @returns {JSX.Element}
+ */
 export const UNCBagIcon: React.FC<INT.IBagIconProps> = ({ cart, toggleMiniBag }): JSX.Element => {
 
   const [show, setShow] = useState(false)

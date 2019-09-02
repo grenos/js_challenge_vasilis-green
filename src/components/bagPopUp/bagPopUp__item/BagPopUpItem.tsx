@@ -8,8 +8,19 @@ import useWindowSize from '@rehooks/window-size';
 
 
 const URL = '?q=60&fit=crop&w=100&h=100'
-
-export const UNCBagPopUpItem: React.FC<INT.IBagItemProps> = ({
+/**
+ *
+ *
+ * @param {*} {
+ *   cart,
+ *   total,
+ *   removeFromCart,
+ *   addQuantity,
+ *   removeQuantity
+ * }
+ * @returns {JSX.Element}
+ */
+const UNCBagPopUpItem: React.FC<INT.IBagItemProps> = ({
   cart,
   total,
   removeFromCart,
@@ -32,6 +43,7 @@ export const UNCBagPopUpItem: React.FC<INT.IBagItemProps> = ({
   if (!cart.length) {
     return <div className="empty-cart">Nothing in your cart yet!</div>
   }
+
 
   return (
     <div className="bag-items__wrapper">

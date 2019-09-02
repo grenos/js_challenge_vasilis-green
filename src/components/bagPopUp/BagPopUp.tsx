@@ -11,6 +11,17 @@ import useWindowSize from '@rehooks/window-size';
 // create portal
 const modalRoot = document.getElementById('bag-root')
 
+
+
+/**
+ * Mini Bag Modal Component
+ * uses react portal
+ * on click on the background closes the modal calling action
+ * @function
+ * @param {boolean} isMiniBagToggle
+ * @param {Function} toggleMiniBag - ACTION
+ * @returns {JSX.Element}
+ */
 export const UNCBagPopUp: React.FC<INT.IBagModal> = ({ isMiniBagToggle, toggleMiniBag }): JSX.Element => {
 
   const el: HTMLDivElement = document.createElement('div');
@@ -25,7 +36,8 @@ export const UNCBagPopUp: React.FC<INT.IBagModal> = ({ isMiniBagToggle, toggleMi
     }
   }, [el])
 
-
+  // animation for modal 
+  // leave prop needs fixing
   return ReactDOM.createPortal(
     <Transition
       items={isMiniBagToggle}
