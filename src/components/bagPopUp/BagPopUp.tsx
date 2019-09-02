@@ -6,6 +6,7 @@ import * as INT from '../../helpers/interfaces'
 import { toggleMiniBag } from '../../redux/actions/uiActions'
 import { useOnClickOutside } from '../../helpers/useOnClickOutside'
 import BagPopUpItem from './bagPopUp__item/BagPopUpItem'
+import useWindowSize from '@rehooks/window-size';
 
 // create portal
 const modalRoot = document.getElementById('bag-root')
@@ -13,7 +14,7 @@ const modalRoot = document.getElementById('bag-root')
 export const UNCBagPopUp: React.FC<INT.IBagModal> = ({ isMiniBagToggle, toggleMiniBag }): JSX.Element => {
 
   const el: HTMLDivElement = document.createElement('div');
-
+  let ww = useWindowSize();
   const ref = useRef<HTMLDivElement>(null);
   useOnClickOutside(ref, () => toggleMiniBag());
 
@@ -33,14 +34,14 @@ export const UNCBagPopUp: React.FC<INT.IBagModal> = ({ isMiniBagToggle, toggleMi
       leave={{ transform: 'translate3d(100%, 0, 0)', opacity: 0 }}>
       {isMiniBagToggle => isMiniBagToggle && (animVal =>
         <a.div style={animVal} className="modal-wrapper">
-          <div className="modal-info-wrapper">
+          {ww.innerWidth > 768 && <div className="modal-info-wrapper">
             <div className="modal-info-inner">
               <h2>Lorem ipsum dolor sit amet</h2>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem porro sint perspiciatis maiores adipisci. Quae repellendus cumque sed ipsa blanditiis distinctio molestias animi, rem odio exercitationem? Eius laboriosam optio ex.
               </p>
             </div>
-          </div>
+          </div>}
           <div className="minibag-wrapper" ref={ref}>
             <BagPopUpItem />
           </div>

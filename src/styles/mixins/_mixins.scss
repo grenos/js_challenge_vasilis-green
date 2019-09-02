@@ -75,6 +75,12 @@
   }
 }
 
+@mixin last-child() {
+  &:last-of-type {
+    @content;
+  }
+}
+
 //! @media
 @mixin phone-320 {
   @media (max-width: #{$_320}) {

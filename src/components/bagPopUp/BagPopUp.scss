@@ -20,19 +20,44 @@
 
       h2 {
         font-size: 30px;
+        margin: 20px 10px;
+        font-family: lato_bold, sans-serif;
       }
 
       p {
         font-size: 20px;
         line-height: 24px;
+        font-family: lato_regular, sans-serif;
       }
     }
   }
 
   .minibag-wrapper {
+    @include flex-box(null, null, center, center);
     height: 100%;
-    width: 500px;
+    width: 80%;
     background: #ffffff;
     box-shadow: -1px 0 10px rgba(70, 70, 70, 0.425);
+
+    .empty-cart {
+      text-align: center;
+      font-family: lato_bold, sans-serif;
+    }
+  }
+}
+
+@include tab-768 {
+  .modal-wrapper {
+    .minibag-wrapper {
+      width: 60%;
+    }
+  }
+}
+
+@include phone-668 {
+  .modal-wrapper {
+    .minibag-wrapper {
+      width: 80%;
+    }
   }
 }

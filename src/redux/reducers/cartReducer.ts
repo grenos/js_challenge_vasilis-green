@@ -36,7 +36,7 @@ export default function cartReducer(state = CART_STATE, action: any) {
       }
 
     case 'REMOVE_FROM_CART':
-      let priceToRemove = state.cart.find((item: INT.ICartItem) => action.payload.uuid === item.uuid)
+      let priceToRemove = state.cart.find((item: INT.ICartItem) => action.uuid === item.uuid)
 
       return {
         ...state,

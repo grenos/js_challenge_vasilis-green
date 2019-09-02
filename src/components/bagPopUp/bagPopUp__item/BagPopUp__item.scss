@@ -1,13 +1,19 @@
 .bag-items__wrapper {
   position: relative;
+  width: 100%;
+  height: 100%;
 
   .bag-item__wrapper {
-    @include flex-box(row, null, space-evenly, flex-start);
+    @include flex-box(row, null, flex-start, flex-start);
     margin: 10px 0px;
     padding: 10px 0;
     border-bottom: 1px solid rgba(0, 0, 0, 0.11);
     font-family: lato_regular, sans-serif;
     position: relative;
+
+    @include last-child() {
+      border: none;
+    }
 
     .bag-item__thumb {
       img {
@@ -34,16 +40,16 @@
         .bag-item__subtract-qt {
           font-size: 22px;
           line-height: 14px;
-          color: #777474;
-          margin: 0 5px;
+          color: #000;
+          margin: 0 10px 0 20px;
           cursor: pointer;
         }
 
         .bag-item__add-qt {
           font-size: 22px;
           line-height: 14px;
-          color: #777474;
-          margin: 0 5px;
+          color: #000;
+          margin: 0 10px;
           cursor: pointer;
         }
 
@@ -77,11 +83,42 @@
   }
 
   .bag-items__total {
-    background: pink;
-    position: fixed;
+    background: #fff;
+    box-shadow: 0px 0px 20px #4c4c4c6c;
+    position: absolute;
     bottom: 0;
-    width: 300px;
+    width: 100%;
     height: 100px;
     @include flex-box(null, null, center, center);
+    font-family: lato_bold, sans-serif;
+    span {
+      margin-right: 10px;
+    }
+  }
+}
+
+@include phone-668 {
+  .bag-items__wrapper {
+    .bag-item__wrapper {
+      .flex-col-wrapper {
+        .flex-row-wrapper {
+          .bag-item__qt p {
+            font-size: 13px;
+          }
+        }
+        .bag-item__title {
+          width: 125px;
+
+          h5 {
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+          }
+        }
+      }
+    }
+    .bag-items__total {
+      height: 80px;
+    }
   }
 }
