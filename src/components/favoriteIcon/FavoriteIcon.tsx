@@ -3,6 +3,13 @@ import { connect } from 'react-redux'
 import { ReactComponent as Favorite } from '../../media/svg/wishlist.svg';
 import * as INT from '../../helpers/interfaces'
 
+
+/**
+ * Displays the length of favorites array 
+ * @function
+ * @param {array} favorites - arrays of uuid's 
+ * @returns {JSX.Element}
+ */
 export const UNCFavoriteIcon: React.FC<INT.IFavIconProps> = ({ favorites }): JSX.Element => {
 
   const [show, setShow] = useState(false)

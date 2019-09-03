@@ -8,18 +8,25 @@ import useWindowSize from '@rehooks/window-size';
 
 
 const URL = '?q=60&fit=crop&w=100&h=100'
+
+
 /**
- *
- *
- * @param {*} {
- *   cart,
- *   total,
- *   removeFromCart,
- *   addQuantity,
- *   removeQuantity
- * }
+ * Component for each item in the mini bag modal
+ * displays items added to the bag
+ * displays total amount
+ * can remove an entire item
+ * can add to quantity 
+ * can remove from quantity 
+ * if quantity becomes 0 item will be removed (done on reducer)
+ * @function
+ * @param {Array} cart - array of items added in mini bag
+ * @param {number} total - total amount of items in euro
+ * @param {Function} removeFromCart - ACTION - removes item
+ * @param {Function} removeQuantity - ACTION - subtracts from Qt
+ * @param {Function} addQuantity - ACTION - adds to Qt
  * @returns {JSX.Element}
  */
+
 const UNCBagPopUpItem: React.FC<INT.IBagItemProps> = ({
   cart,
   total,
@@ -28,9 +35,9 @@ const UNCBagPopUpItem: React.FC<INT.IBagItemProps> = ({
   removeQuantity
 }): JSX.Element => {
 
+  // adjust height of inner mini bag
   let ww = useWindowSize();
   const [_WW, set_WW] = useState(0)
-
   useEffect(() => {
     if (ww.innerWidth <= 666) {
       set_WW(80)
@@ -40,10 +47,10 @@ const UNCBagPopUpItem: React.FC<INT.IBagItemProps> = ({
   }, [ww.innerWidth])
 
 
+  // display message on empty mini bag
   if (!cart.length) {
     return <div className="empty-cart">Nothing in your cart yet!</div>
   }
-
 
   return (
     <div className="bag-items__wrapper">

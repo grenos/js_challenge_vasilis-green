@@ -25,10 +25,15 @@ const modalRoot = document.getElementById('bag-root')
 export const UNCBagPopUp: React.FC<INT.IBagModal> = ({ isMiniBagToggle, toggleMiniBag }): JSX.Element => {
 
   const el: HTMLDivElement = document.createElement('div');
+
+  // for hiding modal info on smaller screens
   let ww = useWindowSize();
+
+  // click outside to close modal
   const ref = useRef<HTMLDivElement>(null);
   useOnClickOutside(ref, () => toggleMiniBag());
 
+  // add/remove portal
   useEffect(() => {
     modalRoot!.appendChild(el)
     return () => {

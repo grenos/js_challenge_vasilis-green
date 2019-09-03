@@ -8,6 +8,19 @@ import errorImg from '../../media/images/error.png'
 
 const URL = '?q=60&fit=crop&w=300&h=300'
 
+/**
+ * Indivisual post component
+ * displays paginaed posts sent from parent component
+ * @function
+ * @param {string} cover_image_url 
+ * @param {string} title
+ * @param {string} description
+ * @param {number} retail_price
+ * @param {number} net_price
+ * @param {number} discount
+ * @param {string} uuid
+ * @returns {JSX.Element}
+ */
 const Post: React.FC<INT.IPostProps> = ({
   cover_image_url,
   title,
@@ -52,7 +65,8 @@ const Post: React.FC<INT.IPostProps> = ({
           onError={() => setError(true)}
         />
 
-        <h3>{title}</h3>
+        {/* fail safe in case description or title is not available */}
+        <h3>{title ? title : 'Nessun Titolo'}</h3>
         <Scrollbar noDefaultStyles style={{ height: 60 }}>
           {description ? <p>{description}</p> : <p>Descrizione non disponibile!</p>}
         </Scrollbar>
@@ -60,9 +74,17 @@ const Post: React.FC<INT.IPostProps> = ({
 
       <div className="item-card__wrapper-bottom">
         <div className="price-wrapper">
-          <h5 className={discount > 0 ? 'strike' : 'price'}>{retail_price.formatted_value}</h5>
+
+          {/* fail safe if prices are not available */}
+          <h5 className={discount > 0 ? 'strike' : 'price'}>
+            {net_price.formatted_value ? net_price.formatted_value : 'N/A'}
+          </h5>
           {discount > 0
-            ? <h5 className="discounted">{net_price.formatted_value}</h5>
+            ? <h5 className="discounted">{
+              retail_price.formatted_value
+                ? retail_price.formatted_value
+                : 'N/A'}
+            </h5>
             : null}
         </div>
 
@@ -70,7 +92,7 @@ const Post: React.FC<INT.IPostProps> = ({
           uuid={uuid}
           title={title}
           cover_image_url={cover_image_url}
-          price={discount > 0 ? net_price.value : retail_price.value}
+          price={discount > 0 ? retail_price.value : net_price.value}
         />
 
       </div>

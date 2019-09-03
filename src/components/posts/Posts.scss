@@ -1,5 +1,4 @@
 .posts-wrapper {
-  // background: palevioletred;
   @include flex-box(row, wrap, space-evenly, center);
 
   &.container {

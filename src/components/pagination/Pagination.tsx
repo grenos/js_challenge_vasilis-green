@@ -8,6 +8,18 @@ import { ReactComponent as ArrowLeft } from '../../media/svg/arrow-left.svg';
 import { ReactComponent as ArroeRight } from '../../media/svg/arrow-right.svg';
 import useWindowSize from '@rehooks/window-size';
 
+
+/**
+ * Pagination Component
+ * displays pagination
+ * uses @function generatePagination which returns an array with the 'correct' pages to display
+ * 
+ * @function
+ * @param {number} currentPage - current page number
+ * @param {array} data - the returned array from the api call
+ * @param {Function} setCurrentPage - ACTION - set current page
+ * @returns {JSX.Element} 
+ */
 export const UNCPagination: React.FC<INT.IPaginateAllProps> = ({
   currentPage,
   data,
@@ -31,7 +43,7 @@ export const UNCPagination: React.FC<INT.IPaginateAllProps> = ({
   const pageNumbers: number[] = [];
   // as long as i is true (so once at a time)
   // take lenght of data and devide by number of posts per page
-  // to find number of pages (basically paginate the array)
+  // to find number of pages (basically 'paginate' the array)
   for (let i = 1; i <= Math.ceil(data.length / postsPerPage); i++) {
     pageNumbers.push(i);
   }
@@ -40,6 +52,8 @@ export const UNCPagination: React.FC<INT.IPaginateAllProps> = ({
     setCurrentPage(1)
   }
 
+  // if we are on page 1 
+  // dont go on page 0
   const goToPrev = (): void => {
     setCurrentPage(
       currentPage > 1
@@ -48,6 +62,8 @@ export const UNCPagination: React.FC<INT.IPaginateAllProps> = ({
     )
   }
 
+  // if we are on last page 
+  // stop there 
   const goToFwd = (): void => {
     setCurrentPage(
       currentPage < pageNumbers.slice(-1)[0]
@@ -78,18 +94,22 @@ export const UNCPagination: React.FC<INT.IPaginateAllProps> = ({
             </a>
           </li>
 
-          {/* function that groups visible pages and generates ellipsis */}
-          {/* also check if return value is 'ellipsis' then is not making it a link */}
-          {generatePagination(currentPage, pageNumbers.slice(-1)[0], _WW).map((item: number, i: number) => (
-            <li key={i}>
-              {(typeof item === typeof 'string')
-                ? <span>{item}</span>
-                : <a onClick={() => setCurrentPage(item)} href="!#" data-test="page"
-                  className={currentPage === item ? 'active' : ''} style={{ cursor: 'pointer' }}>
-                  {item}
-                </a>}
-            </li>
-          ))}
+          {/* 
+            function that groups visible pages and generates ellipsis 
+            returns array with only the pages that need to be displayed
+          */}
+          {generatePagination(currentPage, pageNumbers.slice(-1)[0], _WW)
+            .map((item: number, i: number) => (
+              <li key={i}>
+                {/* check if return value is 'ellipsis-string' then dont make it a link */}
+                {(typeof item === typeof 'string')
+                  ? <span>{item}</span>
+                  : <a onClick={() => setCurrentPage(item)} href="!#" data-test="page"
+                    className={currentPage === item ? 'active' : ''} style={{ cursor: 'pointer' }}>
+                    {item}
+                  </a>}
+              </li>
+            ))}
 
           <li >
             <a href="!#" onClick={goToFwd} data-test="fwd">
