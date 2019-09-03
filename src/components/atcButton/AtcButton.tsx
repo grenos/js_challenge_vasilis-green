@@ -32,12 +32,12 @@ export const UNCAtcButton: React.FC<INT.IAtcButtonProps> = ({
   }
 
   return (
-    <div className="atc-btn__wrapper--outer">
+    <div className="atc-btn__wrapper--outer" data-test="atc-component">
       {/* eslint-disable-next-line */}
       {cart.map((qt: any, idx: number) => {
         if (qt !== null) {
           return (
-            <span className="atcbtn__counter" key={idx}>
+            <span className="atcbtn__counter" data-test="atc-counter" key={idx}>
               {qt}
             </span>
           )
@@ -55,6 +55,8 @@ export const UNCAtcButton: React.FC<INT.IAtcButtonProps> = ({
 
 const mapStateToProps = (state: any, props: any) => {
   // possibily the worst way to do it
+  // better do it in reducer sending to a new piece of cart state
+  // an array with objects that contains the uuid of item and individual quantity
   return {
     cart: state.cartReducer.cart.map((item: any) => (item.uuid === props.uuid ? item.quantity : null))
   }
