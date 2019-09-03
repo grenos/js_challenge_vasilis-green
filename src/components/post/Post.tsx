@@ -80,7 +80,7 @@ const Post: React.FC<INT.IPostProps> = ({
             {net_price.formatted_value ? net_price.formatted_value : 'N/A'}
           </h5>
           {discount > 0
-            ? <h5 className="discounted">{
+            ? <h5 className="price">{
               retail_price.formatted_value
                 ? retail_price.formatted_value
                 : 'N/A'}

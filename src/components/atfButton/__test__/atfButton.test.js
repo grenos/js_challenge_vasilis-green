@@ -1,7 +1,7 @@
 import React from 'react'
 import Enzyme, { shallow } from 'enzyme'
 import EnzymeAdapter from 'enzyme-adapter-react-16'
-import { findByTestAttr, storeFactory } from '../../../helpers/testUtils'
+import { findByTestAttr } from '../../../helpers/testUtils'
 import { UNCAtfButton } from '../AtfButton'
 Enzyme.configure({ adapter: new EnzymeAdapter() })
 
@@ -15,10 +15,9 @@ const defaultProps = {
   favorites: ['aaa', 'ddd']
 }
 
-const setup = ((initialState = {}, props = {}) => {
-  const store = storeFactory(initialState)
+const setup = ((props = {}) => {
   const setupProps = { ...defaultProps, ...props }
-  const wrapper = shallow(<UNCAtfButton store={store} {...setupProps} />)
+  const wrapper = shallow(<UNCAtfButton {...setupProps} />)
   return wrapper
 })
 
@@ -40,7 +39,7 @@ test('should call action to add favorite on click', () => {
 
 
 test('should call action to remove favorite on click', () => {
-  const wrapper = setup({}, { uuid: 'aaa' })
+  const wrapper = setup({ uuid: 'aaa' })
   const component = findByTestAttr(wrapper, 'atf-btn-component')
   component.simulate('click')
   expect(removeFromFavoritesMock).toHaveBeenCalledTimes(1)

@@ -19,7 +19,7 @@ import * as INT from '../../helpers/interfaces'
  * @param {} isMiniBagToggle - from redux - checks if minibag modal is open
  * @return {JSX.Element} 
  */
-const App: React.FC<INT.IAppProps> = ({ setData, isMiniBagToggle }): JSX.Element => {
+export const UNCApp: React.FC<INT.IAppProps> = ({ setData, isMiniBagToggle }): JSX.Element => {
 
   const [loading, setLoading] = useState(false);
 
@@ -54,7 +54,7 @@ const App: React.FC<INT.IAppProps> = ({ setData, isMiniBagToggle }): JSX.Element
 
 
   return (
-    <div className="app-wrapper">
+    <div className="app-wrapper" data-test="app-component">
       <Header />
       <Posts loading={loading} />
       <Pagination />
@@ -72,4 +72,4 @@ const mapStateToProps = (state: any) => {
 }
 
 
-export default connect(mapStateToProps, { setData })(App)
+export default connect(mapStateToProps, { setData })(UNCApp)

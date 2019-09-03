@@ -1,7 +1,7 @@
 import React from 'react'
 import Enzyme, { shallow } from 'enzyme'
 import EnzymeAdapter from 'enzyme-adapter-react-16'
-import { findByTestAttr, storeFactory } from '../../../helpers/testUtils'
+import { findByTestAttr } from '../../../helpers/testUtils'
 import { UNCPagination } from '../Pagination'
 import { data } from '../../../helpers/testData'
 Enzyme.configure({ adapter: new EnzymeAdapter() })
@@ -14,10 +14,9 @@ const defaultProps = {
   data: data
 }
 
-const setup = ((initialState = {}, props = {}) => {
-  const store = storeFactory(initialState)
+const setup = ((props = {}) => {
   const setupProps = { ...defaultProps, ...props }
-  const wrapper = shallow(<UNCPagination store={store} {...setupProps} />)
+  const wrapper = shallow(<UNCPagination {...setupProps} />)
   return wrapper
 })
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import Enzyme, { mount } from 'enzyme'
 import EnzymeAdapter from 'enzyme-adapter-react-16'
-import { findByTestAttr, storeFactory } from '../../../helpers/testUtils'
+import { findByTestAttr } from '../../../helpers/testUtils'
 import { UNCFavoriteIcon } from '../FavoriteIcon'
 Enzyme.configure({ adapter: new EnzymeAdapter() })
 
@@ -10,10 +10,9 @@ const defaultProps = {
   favorites: ['aaa', 'sss', 'eee', 'fff']
 }
 
-const setup = ((initialState = {}, props = {}) => {
-  const store = storeFactory(initialState)
+const setup = ((props = {}) => {
   const setupProps = { ...defaultProps, ...props }
-  const wrapper = mount(<UNCFavoriteIcon store={store} {...setupProps} />)
+  const wrapper = mount(<UNCFavoriteIcon {...setupProps} />)
   return wrapper
 })
 
@@ -38,7 +37,7 @@ test('should render Counter ', () => {
 })
 
 test('should not render Counter ', () => {
-  const wrapper = setup({}, { favorites: [] })
+  const wrapper = setup({ favorites: [] })
   const counter = findByTestAttr(wrapper, 'favorite-icon-counter')
   expect(counter.length).toBe(0)
 })

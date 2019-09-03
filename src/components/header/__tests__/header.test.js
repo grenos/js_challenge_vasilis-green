@@ -1,7 +1,7 @@
 import React from 'react'
 import Enzyme, { shallow } from 'enzyme'
 import EnzymeAdapter from 'enzyme-adapter-react-16'
-import { findByTestAttr, storeFactory } from '../../../helpers/testUtils'
+import { findByTestAttr } from '../../../helpers/testUtils'
 import { UNCHeader } from '../Header'
 Enzyme.configure({ adapter: new EnzymeAdapter() })
 
@@ -11,16 +11,14 @@ const defaultProps = {
 
 
 const setup = ((initialState = {}, props = {}) => {
-  const store = storeFactory(initialState)
   const setupProps = { ...defaultProps, ...props }
-  const wrapper = shallow(<UNCHeader store={store} {...setupProps} />)
+  const wrapper = shallow(<UNCHeader {...setupProps} />)
   return wrapper
 })
 
 
 test('should render component ', () => {
   const wrapper = setup()
-  console.log(wrapper.debug());
   const component = findByTestAttr(wrapper, 'header-component')
   expect(component.length).toBe(1)
 })

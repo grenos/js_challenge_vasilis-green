@@ -1,7 +1,7 @@
 import React from 'react'
 import Enzyme, { shallow } from 'enzyme'
 import EnzymeAdapter from 'enzyme-adapter-react-16'
-import { findByTestAttr, storeFactory } from '../../../helpers/testUtils'
+import { findByTestAttr } from '../../../helpers/testUtils'
 import { UNCPosts } from '../Posts'
 import { data } from '../../../helpers/testData'
 Enzyme.configure({ adapter: new EnzymeAdapter() })
@@ -13,10 +13,9 @@ const defaultProps = {
   data: data
 }
 
-const setup = ((initialState = {}, props = {}) => {
-  const store = storeFactory(initialState)
+const setup = ((props = {}) => {
   const setupProps = { ...defaultProps, ...props }
-  const wrapper = shallow(<UNCPosts store={store} {...setupProps} />)
+  const wrapper = shallow(<UNCPosts {...setupProps} />)
   return wrapper
 })
 
@@ -28,7 +27,7 @@ test('should render loader placeholder ', () => {
 
 
 test('should render component ', () => {
-  const wrapper = setup({}, { loading: false })
+  const wrapper = setup({ loading: false })
   const component = findByTestAttr(wrapper, 'posts-component')
   expect(component.length).toBe(1)
 })
@@ -36,21 +35,20 @@ test('should render component ', () => {
 
 // posts passed to test are 7
 test('should render 6 posts per page', () => {
-  const wrapper = setup({}, { loading: false })
+  const wrapper = setup({ loading: false })
   const post = wrapper.find('Post')
   expect(post.length).toBe(6)
 })
 
 test('should render remaining posts on next page', () => {
-  const wrapper = setup({}, { currentPage: 2, loading: false })
+  const wrapper = setup({ currentPage: 2, loading: false })
   const post = wrapper.find('Post')
   expect(post.length).toBe(1)
 })
 
 
-
 test('should pass correct data to child component', () => {
-  const wrapper = setup({}, { loading: false })
+  const wrapper = setup({ loading: false })
   const post = wrapper.find('Post').first()
   expect(post.prop('uuid')).toEqual('aaa-aaa')
   expect(post.prop('cover_image_url')).toEqual('img.jpg')

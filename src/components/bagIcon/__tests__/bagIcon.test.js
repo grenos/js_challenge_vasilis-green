@@ -1,7 +1,7 @@
 import React from 'react'
 import Enzyme, { mount } from 'enzyme'
 import EnzymeAdapter from 'enzyme-adapter-react-16'
-import { findByTestAttr, storeFactory } from '../../../helpers/testUtils'
+import { findByTestAttr } from '../../../helpers/testUtils'
 import { UNCBagIcon } from '../BagIcon'
 Enzyme.configure({ adapter: new EnzymeAdapter() })
 
@@ -12,10 +12,9 @@ const defaultProps = {
   toggleMiniBag: toggleMiniBagMock
 }
 
-const setup = ((initialState = {}, props = {}) => {
-  const store = storeFactory(initialState)
+const setup = ((props = {}) => {
   const setupProps = { ...defaultProps, ...props }
-  const wrapper = mount(<UNCBagIcon store={store} {...setupProps} />)
+  const wrapper = mount(<UNCBagIcon {...setupProps} />)
   return wrapper
 })
 

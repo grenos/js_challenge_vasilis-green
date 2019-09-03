@@ -8,10 +8,6 @@ import { useOnClickOutside } from '../../helpers/useOnClickOutside'
 import BagPopUpItem from './bagPopUp__item/BagPopUpItem'
 import useWindowSize from '@rehooks/window-size';
 
-// create portal
-const modalRoot = document.getElementById('bag-root')
-
-
 
 /**
  * Mini Bag Modal Component
@@ -24,6 +20,8 @@ const modalRoot = document.getElementById('bag-root')
  */
 export const UNCBagPopUp: React.FC<INT.IBagModal> = ({ isMiniBagToggle, toggleMiniBag }): JSX.Element => {
 
+  // create portal
+  const modalRoot = document.getElementById('bag-root')
   const el: HTMLDivElement = document.createElement('div');
 
   // for hiding modal info on smaller screens
@@ -39,7 +37,7 @@ export const UNCBagPopUp: React.FC<INT.IBagModal> = ({ isMiniBagToggle, toggleMi
     return () => {
       modalRoot!.removeChild(el)
     }
-  }, [el])
+  }, [el, modalRoot])
 
   // animation for modal 
   // leave prop needs fixing
