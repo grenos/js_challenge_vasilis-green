@@ -8,7 +8,7 @@ import * as INT from '../../helpers/interfaces'
 /**
  * Displays bag and favorites icons
  * @function
- * @param {number} total - total amount of items in bag
+ * @param {number} total - total cost of items in bag
  * @returns {JSX.Element}
  */
 export const UNCHeader: React.FC<INT.IHeaderProps> = ({ total }): JSX.Element => {

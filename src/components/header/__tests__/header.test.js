@@ -1,19 +1,26 @@
 import React from 'react'
 import Enzyme, { shallow } from 'enzyme'
 import EnzymeAdapter from 'enzyme-adapter-react-16'
-import { findByTestAttr } from '../../../helpers/testUtils'
-import Header from '../Header'
+import { findByTestAttr, storeFactory } from '../../../helpers/testUtils'
+import { UNCHeader } from '../Header'
 Enzyme.configure({ adapter: new EnzymeAdapter() })
 
+const defaultProps = {
+  total: 120,
+}
 
-const setup = (() => {
-  const wrapper = shallow(<Header />)
+
+const setup = ((initialState = {}, props = {}) => {
+  const store = storeFactory(initialState)
+  const setupProps = { ...defaultProps, ...props }
+  const wrapper = shallow(<UNCHeader store={store} {...setupProps} />)
   return wrapper
 })
 
 
 test('should render component ', () => {
   const wrapper = setup()
+  console.log(wrapper.debug());
   const component = findByTestAttr(wrapper, 'header-component')
   expect(component.length).toBe(1)
 })
@@ -24,18 +31,11 @@ test('should render logo', () => {
   expect(logo.length).toBe(1)
 })
 
-test('should render total price', () => {
-  const wrapper = setup()
-  const price = findByTestAttr(wrapper, 'header-total-price')
-  expect(price.length).toBe(1)
-})
-
 test('should render bag icon', () => {
   const wrapper = setup()
-  const bag = wrapper.find('BagIcon')
+  const bag = wrapper.find('Connect(UNCBagIcon)')
   expect(bag.length).toBe(1)
 })
-
 
 test('should render favorite icon', () => {
   const wrapper = setup()
@@ -43,3 +43,4 @@ test('should render favorite icon', () => {
   expect(favorite.length).toBe(1)
 })
 
+// missing total price test

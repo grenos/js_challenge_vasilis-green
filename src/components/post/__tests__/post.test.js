@@ -10,8 +10,8 @@ const defaultProps = {
   cover_image_url: 'img.jpg',
   title: 'Musei Gratis per Tutti',
   description: 'blah blah',
-  retail_price: { formatted_value: '200£' },
-  net_price: { formatted_value: '199£' },
+  retail_price: { formatted_value: '199£' },
+  net_price: { formatted_value: '200£' },
   discount: 1,
   uuid: 'aaa-aaa'
 }
@@ -73,8 +73,7 @@ test('should render both prices', () => {
 
 test('should render add to cart button', () => {
   const wrapper = setup()
-  const atcBtn = wrapper.find('AtcButton')
+  const atcBtn = wrapper.find('Connect(UNCAtcButton)')
   expect(atcBtn.length).toBe(1)
-  // here need to test if inner text changes
-  // depending if item is in cart or not
 })
+

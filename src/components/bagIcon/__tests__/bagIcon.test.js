@@ -1,13 +1,21 @@
 import React from 'react'
-import Enzyme, { shallow } from 'enzyme'
+import Enzyme, { mount } from 'enzyme'
 import EnzymeAdapter from 'enzyme-adapter-react-16'
-import { findByTestAttr } from '../../../helpers/testUtils'
-import BagIcon from '../BagIcon'
+import { findByTestAttr, storeFactory } from '../../../helpers/testUtils'
+import { UNCBagIcon } from '../BagIcon'
 Enzyme.configure({ adapter: new EnzymeAdapter() })
 
+let toggleMiniBagMock = jest.fn()
 
-const setup = (() => {
-  const wrapper = shallow(<BagIcon />)
+const defaultProps = {
+  cart: ['a', 'b'],
+  toggleMiniBag: toggleMiniBagMock
+}
+
+const setup = ((initialState = {}, props = {}) => {
+  const store = storeFactory(initialState)
+  const setupProps = { ...defaultProps, ...props }
+  const wrapper = mount(<UNCBagIcon store={store} {...setupProps} />)
   return wrapper
 })
 
@@ -20,7 +28,7 @@ test('should render component ', () => {
 
 test('should render Icon ', () => {
   const wrapper = setup()
-  const icon = wrapper.find('ForwardRef(SvgBag)').dive()
+  const icon = wrapper.find('ForwardRef(SvgBag)')
   expect(icon.length).toBe(1)
 })
 
@@ -28,5 +36,6 @@ test('should render Counter ', () => {
   const wrapper = setup()
   const counter = findByTestAttr(wrapper, 'bag-icon-counter')
   expect(counter.length).toBe(1)
+  expect(counter.text()).toBe('2')
 })
 
