@@ -31,11 +31,18 @@ export const UNCBagPopUp: React.FC<INT.IBagModal> = ({ isMiniBagToggle, toggleMi
   const ref = useRef<HTMLDivElement>(null);
   useOnClickOutside(ref, () => toggleMiniBag());
 
-  // add/remove portal
+  // add and remove portal
   useEffect(() => {
-    modalRoot!.appendChild(el)
+    // Within the block of this statement, `modalRoot` must contain a truthy value,
+    // so the `null` type can be removed from the union type.
+    // This means that within this block, `modalRoot` is of type `HTMLElement`
+    if (modalRoot) {
+      modalRoot.appendChild(el)
+    }
     return () => {
-      modalRoot!.removeChild(el)
+      if (modalRoot) {
+        modalRoot.removeChild(el)
+      }
     }
   }, [el, modalRoot])
 
@@ -48,8 +55,8 @@ export const UNCBagPopUp: React.FC<INT.IBagModal> = ({ isMiniBagToggle, toggleMi
       enter={{ transform: 'translate3d(0%, 0, 0)', opacity: 1 }}
       leave={{ transform: 'translate3d(100%, 0, 0)', opacity: 0 }}>
       {isMiniBagToggle => isMiniBagToggle && (animVal =>
-        <a.div style={animVal} className="modal-wrapper">
-          {ww.innerWidth > 768 && <div className="modal-info-wrapper">
+        <a.div style={animVal} className="modal-wrapper" data-test="bag-component">
+          {ww.innerWidth > 768 && <div className="modal-info-wrapper" data-test="modal-info">
             <div className="modal-info-inner">
               <h2>Lorem ipsum dolor sit amet</h2>
               <p>
