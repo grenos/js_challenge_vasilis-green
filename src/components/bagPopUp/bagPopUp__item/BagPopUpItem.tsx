@@ -27,7 +27,7 @@ const URL = '?q=60&fit=crop&w=100&h=100'
  * @returns {JSX.Element}
  */
 
-const UNCBagPopUpItem: React.FC<INT.IBagItemProps> = ({
+export const UNCBagPopUpItem: React.FC<INT.IBagItemProps> = ({
   cart,
   total,
   removeFromCart,
@@ -49,45 +49,46 @@ const UNCBagPopUpItem: React.FC<INT.IBagItemProps> = ({
 
   // display message on empty mini bag
   if (!cart.length) {
-    return <div className="empty-cart">Nothing in your cart yet!</div>
+    return <div className="empty-cart" data-test="empty-cart">Nothing in your cart yet!</div>
   }
 
   return (
-    <div className="bag-items__wrapper">
+    <div className="bag-items__wrapper" data-test="bag-item-component">
 
       <div className="bag-items__scroll-outer-wrapper">
         <Scrollbar noDefaultStyles style={{ height: `calc(100vh - ${_WW}px)` }}>
           {cart.map((item: INT.ICartItem) => (
             <div className="bag-item__wrapper" key={item.uuid}>
               <div className="bag-item__thumb">
-                <img src={item.cover_image_url + URL} alt={item.title} />
+                <img src={item.cover_image_url + URL} alt={item.title} data-test="item-img" />
               </div>
 
               <div className="flex-col-wrapper">
                 <div className="bag-item__title">
-                  <h5>
+                  <h5 data-test="item-title">
                     {item.title}
                   </h5>
                 </div>
 
                 <div className="flex-row-wrapper">
                   <div className="bag-item__qt">
-                    <p>
+                    <p data-test="item-qt">
                       {item.quantity} <span>X</span> {item.price.toLocaleString('it-IT', { style: 'currency', currency: 'EUR' })}
                     </p>
                   </div>
-                  <div className="bag-item__subtract-qt"
+                  <div className="bag-item__subtract-qt" data-test="item-sub-qt"
                     onClick={() => removeQuantity(item.uuid)}>
                     -
                   </div>
-                  <div className="bag-item__add-qt"
+                  <div className="bag-item__add-qt" data-test="item-add-qt"
                     onClick={() => addQuantity(item.uuid)}>
                     +
                   </div>
                 </div>
               </div>
 
-              <span className="bag-item__delete" onClick={() => removeFromCart(item.uuid)}>
+              <span className="bag-item__delete" data-test="item-delete"
+                onClick={() => removeFromCart(item.uuid)}>
                 <Cancel />
               </span>
 

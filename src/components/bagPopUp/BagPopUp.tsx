@@ -35,14 +35,10 @@ export const UNCBagPopUp: React.FC<INT.IBagModal> = ({ isMiniBagToggle, toggleMi
   useEffect(() => {
     // Within the block of this statement, `modalRoot` must contain a truthy value,
     // so the `null` type can be removed from the union type.
-    // This means that within this block, `modalRoot` is of type `HTMLElement`
-    if (modalRoot) {
-      modalRoot.appendChild(el)
-    }
+    // This means that within this block, `modalRoot` is of type `HTMLElement` only
+    modalRoot && modalRoot.appendChild(el)
     return () => {
-      if (modalRoot) {
-        modalRoot.removeChild(el)
-      }
+      modalRoot && modalRoot.removeChild(el)
     }
   }, [el, modalRoot])
 
