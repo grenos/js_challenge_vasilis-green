@@ -4,7 +4,16 @@ import { CART_STATE } from '../states/cartState'
 import * as INT from '../../helpers/interfaces'
 
 
-
+/**
+ * cartReducer
+ * handles mini bag actions - state
+ * @function, cartReducer
+ * @param {array} CART_STATE - State before reducer.
+ * @param {object} action - action to be reduced.
+ * @returns {array} cart array
+ * @returns {number} - total amount (curreny)
+ * @default CART_STATE
+ */
 export default function cartReducer(state = CART_STATE, action: any) {
   switch (action.type) {
 
